@@ -10,106 +10,232 @@ export type Project = {
   title: string;
   category: string;
   description: string;
-  contribution: string;
+  focus: string;
   technologies: string[];
   keyFacts: string[];
   keyResult: string;
   problem: string;
   approach: string;
   outcome: string;
-  visual: "gesture" | "mango" | "flags";
-  link?: ProjectLink;
+  visual: "portal" | "planner" | "model-dna" | "sign" | "medsafe";
+  links: ProjectLink[];
+  disclaimer?: string;
 };
 
 export const projects: Project[] = [
   {
-    id: "sign-sense",
+    id: "gesturecam-fx",
     number: "01",
+    title: "GestureCam FX",
+    category: "Computer Vision · Gesture Interaction · WebGL",
+    description:
+      "A real-time augmented-reality hand-gesture experience where users create an interactive portal with hand pinches and cycle through procedurally generated 3D models.",
+    focus: "Real-time gesture interaction",
+    technologies: [
+      "React",
+      "Vite",
+      "JavaScript",
+      "MediaPipe Hands",
+      "Three.js",
+      "WebGL",
+      "Canvas",
+      "GitHub Pages",
+    ],
+    keyFacts: [
+      "Real-time two-hand tracking",
+      "MediaPipe hand landmarks",
+      "Pinch-gesture detection",
+      "Procedural Three.js models",
+      "Particle disintegration and rematerialization",
+      "Camera, mouse, touch, and keyboard controls",
+      "Responsive desktop and mobile interface",
+      "Browser-based processing",
+    ],
+    keyResult:
+      "A browser-based gesture experience with responsive, multimodal controls.",
+    problem:
+      "Turn natural hand movement into an expressive, responsive augmented-reality interaction in the browser.",
+    approach:
+      "Track two hands with MediaPipe, detect pinch gestures, and connect those signals to a procedural Three.js portal and particle system.",
+    outcome:
+      "An interactive experience that supports camera, mouse, touch, and keyboard input across desktop and mobile interfaces.",
+    visual: "portal",
+    links: [
+      {
+        label: "View repository",
+        href: "https://github.com/shihabbk18/gesturecam-fx",
+        external: true,
+      },
+      {
+        label: "Launch live experience",
+        href: "https://shihabbk18.github.io/gesturecam-fx/",
+        external: true,
+      },
+    ],
+  },
+  {
+    id: "startup-pilot-ai",
+    number: "02",
+    title: "StartupPilot AI",
+    category: "AI Agent · SaaS · Research and Planning Automation",
+    description:
+      "A production-oriented AI platform designed to transform an early startup idea into a structured MVP and business-development plan.",
+    focus: "AI-assisted startup planning",
+    technologies: [
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "OpenAI API",
+      "SQLAlchemy",
+      "Tailwind CSS",
+    ],
+    keyFacts: [
+      "Startup problem and audience analysis",
+      "Market and competitor analysis",
+      "Business Model Canvas and Lean Canvas",
+      "MVP feature planning",
+      "Roadmap and sprint generation",
+      "Architecture and database planning",
+      "Investor-readiness support",
+      "Document upload and local retrieval workflow",
+      "AI-generated planning outputs",
+    ],
+    keyResult:
+      "Structured planning outputs that connect an initial idea to an actionable MVP path.",
+    problem:
+      "Early startup ideas often arrive without a connected view of their audience, market, product, architecture, and delivery plan.",
+    approach:
+      "Use AI-assisted analysis and local document retrieval to organize the idea into linked business, product, technical, and investor-readiness modules.",
+    outcome:
+      "A production-oriented planning platform that generates canvases, MVP scope, architecture guidance, roadmaps, and sprint plans without claiming a commercial deployment.",
+    visual: "planner",
+    links: [
+      {
+        label: "View repository",
+        href: "https://github.com/shihabbk18/startup-pilot-ai",
+        external: true,
+      },
+    ],
+  },
+  {
+    id: "model-dna",
+    number: "03",
+    title: "ModelDNA",
+    category: "Explainable AI · Model Inspection",
+    description:
+      "An explainable-AI toolkit for examining neural-network predictions through Grad-CAM visualizations and confidence analysis.",
+    focus: "Prediction inspection and visual evidence",
+    technologies: [
+      "Python",
+      "PyTorch",
+      "Streamlit",
+      "OpenCV",
+      "ResNet18",
+      "Grad-CAM",
+    ],
+    keyFacts: [
+      "Image classification with pretrained ResNet18",
+      "Grad-CAM heatmaps",
+      "Prediction-confidence analysis",
+      "Neural-attention inspection",
+      "Interactive Streamlit interface",
+    ],
+    keyResult:
+      "A visual inspection workflow for predictions, confidence, and model attention.",
+    problem:
+      "Image-classification outputs can be difficult to assess when predictions are separated from confidence and visual evidence.",
+    approach:
+      "Run images through a pretrained ResNet18, calculate prediction confidence, and surface influential regions through Grad-CAM in Streamlit.",
+    outcome:
+      "An interactive explainability toolkit that makes model attention and classification confidence easier to inspect.",
+    visual: "model-dna",
+    links: [
+      {
+        label: "View repository",
+        href: "https://github.com/shihabbk18/ModelDNA",
+        external: true,
+      },
+    ],
+  },
+  {
+    id: "sign-sense",
+    number: "04",
     title: "Sign Sense",
     category: "Computer Vision · Accessibility",
     description:
-      "A real-time American Sign Language alphabet detector developed using a convolutional neural network and live video processing.",
-    contribution: "CNN model and real-time recognition application development",
+      "A real-time American Sign Language recognition project using a convolutional neural network and live video input.",
+    focus: "Accessibility-focused computer vision",
     technologies: ["Python", "TensorFlow", "Keras", "OpenCV", "CNN"],
     keyFacts: [
-      "Real-time webcam recognition",
-      "CNN-based classification",
-      "ASL alphabet dataset with 29 classes",
-      "Simple prediction interface",
+      "Real-time ASL recognition",
+      "CNN-based prediction",
+      "Computer-vision accessibility",
+      "Python-based implementation",
     ],
-    keyResult: "A working prototype for live ASL alphabet recognition.",
+    keyResult:
+      "A live-video recognition workflow for American Sign Language input.",
     problem:
-      "Make alphabet-level sign recognition immediate and approachable through a standard webcam.",
+      "Interpret American Sign Language input from a live camera stream with an approachable computer-vision interface.",
     approach:
-      "Classify live video frames with a convolutional neural network trained on a 29-class ASL alphabet dataset.",
+      "Process live video with OpenCV and classify sign input with a TensorFlow and Keras convolutional neural network.",
     outcome:
-      "A simple prediction interface that recognizes signs in real time without claiming undocumented deployment or accuracy.",
-    visual: "gesture",
-    link: {
-      label: "View repository",
-      href: "https://github.com/shihabbk18/sign-sense",
-      external: true,
-    },
+      "A Python-based real-time ASL recognition project focused on accessibility, with no undocumented accuracy claim.",
+    visual: "sign",
+    links: [
+      {
+        label: "View repository",
+        href: "https://github.com/shihabbk18/sign-sense",
+        external: true,
+      },
+    ],
   },
   {
-    id: "mango-ripeness",
-    number: "02",
-    title: "Explainable Mango Ripeness Classification",
-    category: "AI Research · Agri-Food",
+    id: "medsafe-lens",
+    number: "05",
+    title: "MedSafe Lens",
+    category: "Health Informatics · Evidence Retrieval",
     description:
-      "A hybrid Xception-LSTM model for classifying six mango ripeness stages while using Grad-CAM to visualize the image regions influencing model predictions.",
-    contribution: "Research implementation and co-authoring",
+      "A medicine-safety review assistant that organizes a medicine list into a traceable evidence brief using public medicine-label data.",
+    focus: "Traceable public-label evidence retrieval",
     technologies: [
-      "Python",
-      "TensorFlow",
-      "Keras",
-      "Xception",
-      "LSTM",
-      "Grad-CAM",
-      "Transfer Learning",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "RxNorm API",
+      "openFDA API",
+      "Progressive Web App",
     ],
     keyFacts: [
-      "6,000-image dataset",
-      "Six ripeness stages",
-      "Hybrid Xception-LSTM architecture",
-      "Grad-CAM explanations",
+      "Accepts multiple medicine names",
+      "Captures relevant patient context",
+      "Normalizes medicine names using RxNorm",
+      "Retrieves public openFDA drug-label information",
+      "Extracts warnings, contraindications, and other label sections",
+      "Creates traceable evidence cards",
+      "Provides medicine-specific review questions",
+      "Supports progressive-web-app behavior",
     ],
-    keyResult: "98% accuracy reported in the publication.",
+    keyResult:
+      "Traceable medicine-label evidence cards with source indicators and focused review questions.",
     problem:
-      "Classify visually similar ripeness stages while making the model’s evidence easier to inspect.",
+      "Medicine lists and patient context can be difficult to organize into a source-aware brief for an informed safety conversation.",
     approach:
-      "Combine Xception feature extraction with LSTM classification, then use Grad-CAM to surface influential image regions.",
+      "Normalize medicine names with RxNorm, retrieve public openFDA label sections, and organize warnings, contraindications, and questions into traceable evidence cards.",
     outcome:
-      "The publication reports 98% accuracy, precision, recall, and F1-score on a balanced 6,000-image dataset.",
-    visual: "mango",
-    link: {
-      label: "View research details",
-      href: "#research",
-      external: false,
-    },
-  },
-  {
-    id: "fun-with-flags",
-    number: "03",
-    title: "Fun with Flags",
-    category: "Mobile Application",
-    description:
-      "An Android quiz application that tests users’ knowledge of national flags while tracking scores and presenting results.",
-    contribution: "Android application and database-backed quiz development",
-    technologies: ["Java", "Android Studio", "MySQL"],
-    keyFacts: [
-      "Interactive flag quizzes",
-      "Score tracking",
-      "Result reporting",
-      "Database-backed data handling",
+      "An informational progressive web app that structures public-label evidence without providing diagnosis or replacing clinical judgment.",
+    visual: "medsafe",
+    links: [
+      {
+        label: "View repository",
+        href: "https://github.com/shihabbk18/medicine-safety-checker",
+        external: true,
+      },
     ],
-    keyResult: "A complete quiz flow with feedback and result reporting.",
-    problem:
-      "Turn flag recognition into an interactive learning experience with clear progress and feedback.",
-    approach:
-      "Build a Java-based Android quiz flow backed by stored flag data and score tracking.",
-    outcome:
-      "An application that delivers quizzes, records scores, and presents user results; no public repository is claimed.",
-    visual: "flags",
+    disclaimer:
+      "This project is an informational review assistant, not a medical device, diagnosis tool, or replacement for professional clinical judgment.",
   },
 ];

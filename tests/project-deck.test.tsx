@@ -19,12 +19,12 @@ describe("ProjectDeck", () => {
 
     await user.click(
       screen.getByRole("button", {
-        name: "Bring Explainable Mango Ripeness Classification to front",
+        name: "Bring ModelDNA to front",
       }),
     );
 
-    await waitFor(() => expect(screen.getByText("Active study / 02")).toBeInTheDocument());
-    expect(screen.getByText("02 / 03")).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText("Active study / 03")).toBeInTheDocument());
+    expect(screen.getByText("03 / 05")).toBeInTheDocument();
   });
 
   it("supports previous and next controls", async () => {
@@ -32,10 +32,10 @@ describe("ProjectDeck", () => {
     render(<ProjectDeck />);
 
     await user.click(screen.getByRole("button", { name: "Show next project" }));
-    expect(screen.getByText("02 / 03")).toBeInTheDocument();
+    expect(screen.getByText("02 / 05")).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: "Show previous project" }));
-    expect(screen.getByText("01 / 03")).toBeInTheDocument();
+    expect(screen.getByText("01 / 05")).toBeInTheDocument();
   });
 
   it("changes the active project with arrow keys", () => {
@@ -43,9 +43,26 @@ describe("ProjectDeck", () => {
     const region = screen.getByRole("region", { name: "Featured projects" });
 
     fireEvent.keyDown(region, { key: "ArrowRight" });
-    expect(screen.getByText("02 / 03")).toBeInTheDocument();
+    expect(screen.getByText("02 / 05")).toBeInTheDocument();
 
     fireEvent.keyDown(region, { key: "ArrowLeft" });
-    expect(screen.getByText("01 / 03")).toBeInTheDocument();
+    expect(screen.getByText("01 / 05")).toBeInTheDocument();
+  });
+
+  it("starts with GestureCam FX active and shows the MedSafe disclaimer", async () => {
+    const user = userEvent.setup();
+    render(<ProjectDeck />);
+
+    expect(screen.getByText("Active study / 01")).toBeInTheDocument();
+    expect(screen.getAllByText("GestureCam FX").length).toBeGreaterThan(0);
+
+    await user.click(screen.getByRole("button", { name: "Bring MedSafe Lens to front" }));
+    await waitFor(() =>
+      expect(
+        screen.getByText(
+          "This project is an informational review assistant, not a medical device, diagnosis tool, or replacement for professional clinical judgment.",
+        ),
+      ).toBeInTheDocument(),
+    );
   });
 });

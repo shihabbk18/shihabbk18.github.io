@@ -10,8 +10,8 @@
     "build": "vinext build",
     "build:next": "next build",
     "start": "vinext start",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "vitest run --configLoader runner",
+    "test:watch": "vitest --configLoader runner",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },

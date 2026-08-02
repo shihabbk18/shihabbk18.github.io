@@ -25,25 +25,46 @@ export function ProjectCard({ project, active, onActivate }: ProjectCardProps) {
       </div>
 
       <div className="project-card__visual" aria-hidden="true">
-        {project.visual === "gesture" ? (
+        {project.visual === "portal" ? (
           <>
-            <div className="gesture-hand"><i /><i /><i /><i /><i /></div>
-            <div className="vision-box"><span>LIVE</span></div>
+            <div className="portal-ring"><i /><i /><i /></div>
+            <div className="portal-object"><i /><i /><i /></div>
+            <div className="portal-hand portal-hand--left"><i /><i /><i /><i /><i /></div>
+            <div className="portal-hand portal-hand--right"><i /><i /><i /><i /><i /></div>
+            <span className="portal-label">PINCH / PORTAL</span>
           </>
         ) : null}
-        {project.visual === "mango" ? (
+        {project.visual === "planner" ? (
           <>
-            <div className="mango-shape" />
-            <div className="heat-map"><i /><i /><i /></div>
-            <span className="visual-coordinate">CAM / 06</span>
-          </>
-        ) : null}
-        {project.visual === "flags" ? (
-          <>
-            <div className="flag-grid">
-              <i /><i /><i /><i /><i /><i />
+            <div className="planner-idea"><span>IDEA</span></div>
+            <div className="planner-line" />
+            <div className="planner-modules">
+              <span>Market</span><span>Product</span><span>Architecture</span><span>Roadmap</span><span>Pitch</span>
             </div>
-            <span className="visual-score">08 / 10</span>
+          </>
+        ) : null}
+        {project.visual === "model-dna" ? (
+          <>
+            <div className="model-source"><i /><i /><i /></div>
+            <div className="model-layers">
+              <i /><i /><i /><i />
+            </div>
+            <div className="model-heatmap"><i /><i /><i /></div>
+            <span className="model-confidence">CONF / 0.92</span>
+          </>
+        ) : null}
+        {project.visual === "sign" ? (
+          <>
+            <div className="sign-frame"><span>ASL / LIVE</span></div>
+            <div className="sign-hand"><i /><i /><i /><i /><i /><b /><b /><b /></div>
+            <div className="sign-label"><span>CLASS</span><strong>A</strong></div>
+          </>
+        ) : null}
+        {project.visual === "medsafe" ? (
+          <>
+            <div className="medicine-list"><span>MED / 01</span><span>MED / 02</span><span>MED / 03</span></div>
+            <div className="medicine-sources"><i>Rx</i><i>FDA</i></div>
+            <div className="evidence-stack"><span>Source</span><span>Warning</span><span>Review</span></div>
           </>
         ) : null}
       </div>
@@ -66,19 +87,19 @@ export function ProjectCard({ project, active, onActivate }: ProjectCardProps) {
       </div>
 
       <div className="project-card__footer">
-        <span>{project.contribution}</span>
-        {active && project.link ? (
+        <span>{project.focus}</span>
+        {active ? (
           <a
-            href={project.link.href}
-            target={project.link.external ? "_blank" : undefined}
-            rel={project.link.external ? "noreferrer" : undefined}
-            aria-label={`${project.link.label}: ${project.title}`}
+            href={project.links[0].href}
+            target={project.links[0].external ? "_blank" : undefined}
+            rel={project.links[0].external ? "noreferrer" : undefined}
+            aria-label={`${project.links[0].label}: ${project.title}`}
           >
-            {project.link.label}
+            {project.links[0].label}
             <ArrowUpRight aria-hidden="true" size={15} />
           </a>
         ) : (
-          <span>{project.link ? "Select to open" : "No public link"}</span>
+          <span>Select to open</span>
         )}
       </div>
     </article>

@@ -45,13 +45,17 @@ export function ProjectDeck() {
     const position = (index - activeIndex + projects.length) % projects.length;
     const desktop = [
       { x: 0, y: -5, rotate: 0, scale: 1, opacity: 1 },
-      { x: 34, y: 38, rotate: 2.2, scale: 0.96, opacity: 0.82 },
-      { x: -27, y: 75, rotate: -2.1, scale: 0.92, opacity: 0.62 },
+      { x: 34, y: 27, rotate: 1.8, scale: 0.97, opacity: 0.88 },
+      { x: -25, y: 52, rotate: -1.6, scale: 0.94, opacity: 0.75 },
+      { x: 46, y: 77, rotate: 2.4, scale: 0.91, opacity: 0.62 },
+      { x: -38, y: 102, rotate: -2.2, scale: 0.88, opacity: 0.49 },
     ];
     const mobile = [
       { x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 },
-      { x: 14, y: 27, rotate: 0.8, scale: 0.975, opacity: 0.8 },
-      { x: -10, y: 53, rotate: -0.8, scale: 0.95, opacity: 0.58 },
+      { x: 10, y: 20, rotate: 0.5, scale: 0.985, opacity: 0.88 },
+      { x: -7, y: 40, rotate: -0.55, scale: 0.97, opacity: 0.76 },
+      { x: 11, y: 60, rotate: 0.7, scale: 0.955, opacity: 0.64 },
+      { x: -8, y: 80, rotate: -0.75, scale: 0.94, opacity: 0.52 },
     ];
     return {
       ...(isMobile ? mobile[position] : desktop[position]),
@@ -157,19 +161,27 @@ export function ProjectDeck() {
                   {activeProject.keyFacts.map((fact) => <li key={fact}>{fact}</li>)}
                 </ul>
 
-                {activeProject.link ? (
-                  <a
-                    className="text-link"
-                    href={activeProject.link.href}
-                    target={activeProject.link.external ? "_blank" : undefined}
-                    rel={activeProject.link.external ? "noreferrer" : undefined}
-                  >
-                    {activeProject.link.label}
-                    <ArrowUpRight aria-hidden="true" size={17} />
-                  </a>
-                ) : (
-                  <p className="project-details__unavailable">No public link is available for this project.</p>
-                )}
+                {activeProject.disclaimer ? (
+                  <p className="project-details__disclaimer">
+                    <span>Important</span>
+                    {activeProject.disclaimer}
+                  </p>
+                ) : null}
+
+                <div className="project-details__links" aria-label={`${activeProject.title} links`}>
+                  {activeProject.links.map((link) => (
+                    <a
+                      className="text-link"
+                      href={link.href}
+                      key={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noreferrer" : undefined}
+                    >
+                      {link.label}
+                      <ArrowUpRight aria-hidden="true" size={17} />
+                    </a>
+                  ))}
+                </div>
               </motion.article>
             </AnimatePresence>
           </div>

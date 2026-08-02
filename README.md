@@ -21,7 +21,7 @@ Add desktop and mobile screenshots to `public/screenshots/`, then reference them
 
 ## Project-deck interaction
 
-Featured work is rendered from typed data in `data/projects.ts`. All three cards remain in one visible stack. The active card has the highest stacking order while the other cards retain small offsets, rotations, opacity changes, and scale changes. Selecting a background card moves it to the front with a restrained spring transition. Previous/Next buttons, Left/Right Arrow keys, touch input, visible focus, a numeric counter, and reduced-motion behavior are included.
+Featured work is rendered from typed data in `data/projects.ts`. All five cards remain in one visible stack, led by GestureCam FX. The active card has the highest stacking order while the other cards retain small offsets, rotations, opacity changes, and scale changes. Selecting a background card moves it to the front with a restrained spring transition. Previous/Next buttons, Left/Right Arrow keys, touch input, visible focus, a numeric counter, and reduced-motion behavior are included.
 
 ## Technology stack
 
@@ -104,10 +104,10 @@ The CV is a verified workspace asset copied to `public/Shihab-Bin-Kader-CV.pdf`.
 ## Adding another project
 
 1. Add a new object to the `projects` array in `data/projects.ts` and follow the exported `Project` type.
-2. Use only a verified external URL. Omit `link` when no public repository, demo, or publication URL exists.
+2. Add each verified repository, live experience, or publication URL to the project’s `links` array.
 3. Add a supported abstract visual variant in `components/project-card.tsx` and `app/globals.css`, or deliberately reuse the closest existing variant.
 4. Keep descriptions, outcomes, and claimed results evidence-based.
-5. The deck counter and Previous/Next logic update from the array length automatically. For more than four projects, review the physical stack offsets before publishing.
+5. The deck counter and Previous/Next logic update from the array length automatically. If the deck grows beyond five projects, extend the physical stack states before publishing.
 
 ## Accessibility
 
