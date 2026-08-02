@@ -1,5 +1,15 @@
 export const siteUrl =
-  (process.env.NEXT_PUBLIC_SITE_URL ?? "https://shihabbk18.github.io").replace(/\/$/, "");
+  (process.env.NEXT_PUBLIC_SITE_URL ?? "https://shihabbk18.github.io/PORTFOLIO-").replace(
+    /\/$/,
+    "",
+  );
+
+export const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+
+export function withBasePath(path: string) {
+  if (!path.startsWith("/")) return path;
+  return `${basePath}${path}`;
+}
 
 export const identity = {
   name: "Shihab Bin Kader",
@@ -8,7 +18,7 @@ export const identity = {
   location: "Chattogram, Bangladesh",
   email: "shihabbk18@gmail.com",
   github: "https://github.com/shihabbk18",
-  cv: "/Shihab-Bin-Kader-CV.pdf",
+  cv: withBasePath("/Shihab-Bin-Kader-CV.pdf"),
 } as const;
 
 export const navigationItems = [

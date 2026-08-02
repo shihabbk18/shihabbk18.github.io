@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import { BackgroundVisual } from "@/components/background-visual";
 import { Navigation } from "@/components/navigation";
-import { identity, siteUrl } from "@/data/portfolio";
+import { identity, siteUrl, withBasePath } from "@/data/portfolio";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,17 +36,17 @@ export const metadata: Metadata = {
     "multimodal learning",
     "AI researcher",
   ],
-  alternates: { canonical: "/" },
+  alternates: { canonical: siteUrl },
   openGraph: {
     type: "website",
-    url: "/",
+    url: siteUrl,
     title,
     description,
     siteName: "Shihab Bin Kader — Portfolio",
     locale: "en_US",
     images: [
       {
-        url: "/og-image.png",
+        url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
         alt: "Shihab Bin Kader — AI researcher and computer vision developer",
@@ -57,11 +57,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og-image.png"],
+    images: [`${siteUrl}/og-image.png`],
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: withBasePath("/favicon.svg"),
+    shortcut: withBasePath("/favicon.svg"),
   },
   robots: { index: true, follow: true },
 };

@@ -90,6 +90,10 @@ The interaction suite covers the project deck, mobile navigation, contact valida
 
 Use `pnpm build:next` and a host that supports the Next.js App Router. Set `NEXT_PUBLIC_SITE_URL` to the production origin so canonical, sitemap, robots, and social metadata point to the correct address.
 
+### GitHub Pages
+
+The included `.github/workflows/deploy-pages.yml` workflow exports the portfolio as a static site and publishes it at `https://shihabbk18.github.io/PORTFOLIO-/`. It supplies the repository base path during the build so scripts, fonts, the favicon, the Open Graph image, and the CV resolve correctly. GitHub Pages must use **GitHub Actions** as its publishing source.
+
 ## Editing content
 
 - Identity, biography, focus areas, research, education, recognition, and navigation: `data/portfolio.ts`
