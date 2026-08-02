@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SBK monogram">
+  <rect width="64" height="64" rx="14" fill="#0B0D0E"/>
+  <circle cx="32" cy="32" r="23.5" fill="none" stroke="#293033"/>
+  <circle cx="32" cy="32" r="18" fill="#111517" stroke="#748A81" stroke-width="1.4"/>
+  <path d="M8 32h8M48 32h8M32 8v8M32 48v8" stroke="#748A81" stroke-width="1"/>
+  <text x="32" y="35.5" fill="#E6E4DF" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="-.5">SBK</text>
+</svg>
