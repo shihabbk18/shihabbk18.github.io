@@ -1,5 +1,7 @@
 # Shihab Bin Kader — Interactive AI Portfolio
 
+Check it out — https://shihabbk18.github.io/PORTFOLIO-/
+
 A production-ready, single-page research portfolio for Shihab Bin Kader, an aspiring AI researcher and computer-vision developer. The site presents verified projects, research, education, and skills through a dark editorial interface designed for graduate-school applications, research opportunities, and professional networking.
 
 ## Screenshots
